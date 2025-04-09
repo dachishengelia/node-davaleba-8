@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const movies = await Movie.find().populate('director');
+    const movies = await Movie.find().populate('rejisori');
     res.json(movies);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -36,7 +36,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   try {
-    const movie = await Movie.findById(req.params.id).populate('director');
+    const movie = await Movie.findById(req.params.id).populate('rejisori');
     if (!movie) {
       return res.status(404).json({ error: 'Movie not found' });
     }
